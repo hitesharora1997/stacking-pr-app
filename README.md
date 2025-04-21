@@ -24,7 +24,12 @@ SPDX-License-Identifier: MIT
   <br />
   <br />
 
-  <img alt="FastAPI Swagger UI Screenshot" width="600" src="https://fastapi.tiangolo.com/img/index/index-01-simplified.png">
+<img 
+  src="https://fastapi.tiangolo.com/img/index/index-01-simplified.png" 
+  alt="FastAPI Swagger UI Screenshot" 
+  width="600" 
+  loading="lazy"
+/>
 
 </div>
 
