@@ -1,5 +1,9 @@
 from fastapi import APIRouter
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from app.models.task import Task as TaskModel
 from app.schemas.task import Task
+from app.dependencies import get_db
 
 router = APIRouter()
 
@@ -7,10 +11,13 @@ router = APIRouter()
 tasks = []
 
 @router.get("/tasks", response_model=list[Task])
-def get_tasks():
-    return tasks
+def get_tasks(db: Session = Depends(get_db)):
+    return db.query(TaskModel).all()
 
 @router.post("/tasks", response_model=Task)
-def create_task(task: Task):
-    tasks.append(task)
-    return task
+def create_task(task: Task, db: Session = Depends(get_db)):
+    db_task = TaskModel(**task.dict())
+    db.add(db_task)
+    db.commit()
+    db.refresh(db_task)
+    return db_task
