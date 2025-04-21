@@ -24,14 +24,6 @@ SPDX-License-Identifier: MIT
   <br />
   <br />
 
-<img 
-  src="https://fastapi.tiangolo.com/img/tutorial/path-operation-decorator.png" 
-  alt="FastAPI Swagger UI Screenshot" 
-  width="600" 
-/>
-
-
-
 </div>
 
 ---
