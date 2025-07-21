@@ -66,13 +66,10 @@ def test_health_endpoint(client: TestClient):
     assert data["version"] == "0.1.0"
 
 
-@patch('app.main.uvicorn')
+@patch("app.main.uvicorn")
 def test_main_function(mock_uvicorn):
     """Test main function calls uvicorn.run with correct parameters"""
     main()
     mock_uvicorn.run.assert_called_once_with(
-        "app.main:app", 
-        host="0.0.0.0", 
-        port=8000, 
-        reload=True
+        "app.main:app", host="0.0.0.0", port=8000, reload=True
     )

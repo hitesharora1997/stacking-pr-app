@@ -75,7 +75,7 @@ def test_create_task_duplicate_id(client: TestClient, sample_task_data):
     # Create task first time
     response = client.post("/api/v1/tasks", json=sample_task_data)
     assert response.status_code == 200
-    
+
     # Try to create same task again
     response = client.post("/api/v1/tasks", json=sample_task_data)
     assert response.status_code == 409
@@ -86,11 +86,11 @@ def test_get_task_by_id(client: TestClient, sample_task_data):
     """Test getting a specific task by ID"""
     # Create task first
     client.post("/api/v1/tasks", json=sample_task_data)
-    
+
     # Get task by ID
     response = client.get(f"/api/v1/tasks/{sample_task_data['id']}")
     assert response.status_code == 200
-    
+
     task = response.json()
     assert task["id"] == sample_task_data["id"]
     assert task["title"] == sample_task_data["title"]
@@ -101,5 +101,3 @@ def test_get_task_not_found(client: TestClient):
     response = client.get("/api/v1/tasks/999")
     assert response.status_code == 404
     assert "not found" in response.json()["detail"]
-
-
