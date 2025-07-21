@@ -1,3 +1,32 @@
+Metadata-Version: 2.4
+Name: stacking-pr
+Version: 0.1.0
+Summary: A FastAPI application for task management with database integration
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: alembic==1.15.2
+Requires-Dist: fastapi==0.115.12
+Requires-Dist: psycopg2-binary==2.9.10
+Requires-Dist: pydantic==2.11.3
+Requires-Dist: SQLAlchemy==2.0.40
+Requires-Dist: uvicorn==0.34.2
+Provides-Extra: dev
+Requires-Dist: black==25.1.0; extra == "dev"
+Requires-Dist: flake8==7.2.0; extra == "dev"
+Requires-Dist: isort==6.0.1; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest==8.3.4; extra == "test"
+Requires-Dist: pytest-cov==6.0.0; extra == "test"
+Requires-Dist: httpx==0.28.1; extra == "test"
+
 <!--
 SPDX-FileCopyrightText: 2024 Hitesh Arora
 SPDX-FileContributor: Hitesh Arora

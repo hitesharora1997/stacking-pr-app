@@ -4,7 +4,7 @@ PYTHON = $(VENV_NAME)/bin/python
 PIP = $(VENV_NAME)/bin/pip
 PYTEST = $(VENV_NAME)/bin/pytest
 
-.PHONY: all setup install run test docker docker-down clean migrate logs help
+.PHONY: all setup install run test test-cov test-file test-pattern docker docker-down clean migrate logs help
 
 # Default target
 all: docker migrate logs
@@ -28,7 +28,24 @@ run:
 # Run tests
 test: install
 	@echo "Running tests..."
-	PYTHONPATH=$(PWD) $(PYTEST) tests
+	$(PYTEST)
+
+# Run tests with coverage
+test-cov: install
+	@echo "Running tests with coverage..."
+	$(PYTEST) --cov=app --cov-report=html --cov-report=term
+
+# Run specific test file
+test-file: install
+	@echo "Running specific test file..."
+	@read -p "Enter test file path (e.g., tests/test_main.py): " file; \
+	$(PYTEST) $$file -v
+
+# Run tests matching a pattern
+test-pattern: install
+	@echo "Running tests matching pattern..."
+	@read -p "Enter test pattern (e.g., test_create): " pattern; \
+	$(PYTEST) -k $$pattern -v
 
 # Start Docker containers
 docker:
@@ -64,6 +81,9 @@ help:
 	@echo "  install      - Install dependencies into venv"
 	@echo "  run          - Run FastAPI locally (not via Docker)"
 	@echo "  test         - Run tests"
+	@echo "  test-cov     - Run tests with coverage report"
+	@echo "  test-file    - Run specific test file"
+	@echo "  test-pattern - Run tests matching a pattern"
 	@echo "  docker       - Build and start Docker containers"
 	@echo "  docker-down  - Stop Docker containers"
 	@echo "  migrate      - Run Alembic migrations inside container"
