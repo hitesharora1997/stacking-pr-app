@@ -1,5 +1,61 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
-venv/
-.env
+*.py[cod]
+*$py.class
 
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebook checkpoints (if ever used)
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# Packaging artifacts
+*.egg-info/
+dist/
+build/
+
+# Coverage reports
+htmlcov/
+.coverage
+.cache/
+.tox/
+
+# pytest
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# MyPy / Pylint / other tooling
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Editor/IDE configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Alembic generated migration cache (optional to ignore)
+alembic/versions/*.pyc
+alembic/versions/__pycache__/
+
+# SQLite test DB
+test.db
+
+# Docker
+*.log
+*.pid
+
+# OS-specific
+.DS_Store
+Thumbs.db

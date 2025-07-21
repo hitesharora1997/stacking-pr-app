@@ -259,7 +259,7 @@ This project is licensed under the MIT License.
 
 1. **Clone and Setup**:
    ```bash
-   git clone https://github.com/yourname/stacking_pr.git
+   git clone https://github.com/hitesharora1997/stacking_pr.git
    cd stacking_pr
    make setup
    ```
