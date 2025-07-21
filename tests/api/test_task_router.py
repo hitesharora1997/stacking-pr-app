@@ -1,6 +1,7 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
 from fastapi.testclient import TestClient
-from unittest.mock import patch, MagicMock
 from sqlalchemy.exc import IntegrityError
 
 from app.models.task import Task as TaskModel

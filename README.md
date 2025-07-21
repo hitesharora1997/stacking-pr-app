@@ -17,11 +17,11 @@ SPDX-License-Identifier: MIT
 
   <!-- Badges -->
   <p>
-    <img src="https://github.com/yourname/stacking_pr/workflows/CI%2FCD%20Pipeline/badge.svg" alt="CI/CD Status" />
-    <img src="https://img.shields.io/badge/python-3.8%2B-blue" alt="Python 3.8+" />
+    <img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.8+" />
     <img src="https://img.shields.io/badge/fastapi-0.115.12-009688" alt="FastAPI" />
     <img src="https://img.shields.io/badge/coverage-%3E80%25-brightgreen" alt="Coverage >80%" />
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black" />
+    <img src="https://img.shields.io/pypi/v/stacking-pr?label=pypi" alt="PyPI" />
   </p>
 
   <a href="#stacked-prs">Stacked PR Structure</a> •
@@ -105,7 +105,7 @@ stacking_pr/
 ### ⚡ Run Locally
 
 ```bash
-git clone https://github.com/yourname/stacking_pr.git
+git clone https://github.com/hitesharora1997/stacking_pr.git
 cd stacking_pr
 
 # Build and run containers
@@ -218,7 +218,7 @@ The project includes a comprehensive CI/CD pipeline that runs on:
 #### Pipeline Stages:
 
 1. **Testing Matrix**:
-   - Python versions: 3.8, 3.9, 3.10, 3.11
+   - Python versions: 3.9, 3.10, 3.11
    - PostgreSQL integration testing
    - Code quality checks (Black, isort, flake8)
    - Test coverage reporting
