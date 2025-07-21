@@ -12,7 +12,7 @@ Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
-Requires-Dist: alembic==1.15.2
+Requires-Dist: alembic==1.14.1
 Requires-Dist: fastapi==0.115.12
 Requires-Dist: psycopg2-binary==2.9.10
 Requires-Dist: pydantic==2.11.3

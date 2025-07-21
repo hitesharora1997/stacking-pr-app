@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-    "alembic==1.15.2",
+    "alembic==1.14.1",
     "fastapi==0.115.12",
     "psycopg2-binary==2.9.10",
     "pydantic==2.11.3",
