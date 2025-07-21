@@ -1,5 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
+from unittest.mock import patch, MagicMock
+from sqlalchemy.exc import IntegrityError
 
 from app.models.task import Task as TaskModel
 
@@ -66,3 +68,38 @@ def test_create_multiple_tasks(client: TestClient):
 
     tasks = response.json()
     assert len(tasks) == 3
+
+
+def test_create_task_duplicate_id(client: TestClient, sample_task_data):
+    """Test creating task with duplicate ID"""
+    # Create task first time
+    response = client.post("/api/v1/tasks", json=sample_task_data)
+    assert response.status_code == 200
+    
+    # Try to create same task again
+    response = client.post("/api/v1/tasks", json=sample_task_data)
+    assert response.status_code == 409
+    assert "already exists" in response.json()["detail"]
+
+
+def test_get_task_by_id(client: TestClient, sample_task_data):
+    """Test getting a specific task by ID"""
+    # Create task first
+    client.post("/api/v1/tasks", json=sample_task_data)
+    
+    # Get task by ID
+    response = client.get(f"/api/v1/tasks/{sample_task_data['id']}")
+    assert response.status_code == 200
+    
+    task = response.json()
+    assert task["id"] == sample_task_data["id"]
+    assert task["title"] == sample_task_data["title"]
+
+
+def test_get_task_not_found(client: TestClient):
+    """Test getting task that doesn't exist"""
+    response = client.get("/api/v1/tasks/999")
+    assert response.status_code == 404
+    assert "not found" in response.json()["detail"]
+
+

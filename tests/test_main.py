@@ -1,7 +1,8 @@
 import pytest
 from fastapi.testclient import TestClient
+from unittest.mock import patch
 
-from app.main import app
+from app.main import app, main
 
 
 @pytest.fixture
@@ -53,3 +54,25 @@ def test_openapi_schema(client: TestClient):
     schema = response.json()
     assert "openapi" in schema
     assert "info" in schema
+
+
+def test_health_endpoint(client: TestClient):
+    """Test dedicated health endpoint"""
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "healthy"
+    assert data["service"] == "stacking-pr-api"
+    assert data["version"] == "0.1.0"
+
+
+@patch('app.main.uvicorn')
+def test_main_function(mock_uvicorn):
+    """Test main function calls uvicorn.run with correct parameters"""
+    main()
+    mock_uvicorn.run.assert_called_once_with(
+        "app.main:app", 
+        host="0.0.0.0", 
+        port=8000, 
+        reload=True
+    )
